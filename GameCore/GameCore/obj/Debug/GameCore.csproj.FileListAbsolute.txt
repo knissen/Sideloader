@@ -8,7 +8,6 @@ C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\UnityEngine.CoreModule.x
 C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\UnityEngine.SharedInternalsModule.xml
 C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.csproj.AssemblyReference.cache
 C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.csproj.CoreCompileInputs.cache
-C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.csproj.CopyComplete
 C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.dll
 C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.pdb
 C:\Work\Projects\Sideloader\Sideloader\Assets\GameCore\GameCore.dll
