@@ -1,0 +1,15 @@
+C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\GameCore.dll
+C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\GameCore.pdb
+C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\Assembly-CSharp.dll
+C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\UnityEngine.CoreModule.dll
+C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\UnityEngine.SharedInternalsModule.dll
+C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\Assembly-CSharp.pdb
+C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\UnityEngine.CoreModule.xml
+C:\Work\Projects\Sideloader\GameCore\GameCore\bin\Debug\UnityEngine.SharedInternalsModule.xml
+C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.csproj.AssemblyReference.cache
+C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.csproj.CoreCompileInputs.cache
+C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.csproj.CopyComplete
+C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.dll
+C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.pdb
+C:\Work\Projects\Sideloader\Sideloader\Assets\GameCore\GameCore.dll
+C:\Work\Projects\Sideloader\Sideloader\Assets\GameCore\GameCore.pdb
