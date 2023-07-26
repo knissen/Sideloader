@@ -20,13 +20,13 @@ public class HotReload : MonoBehaviour
     private IGameCore gameCore;
 
 #if UNITY_EDITOR
-    private static string MdbName = "GameCore.mdb";
-    private static string DllDirectory = "Assets//GameCoreOutput//Resources//";
+    private static string PdbName = "GameCore.pdb";
+    private static string DllDirectory = "Assets//GameCore//Resources//";
 #else
     private static string DllDirectory = "Assets\\GameCore\\Resources\\";
 #endif    
     private static string DllPath = DllDirectory + DllName + ".bytes";
-    private static string MdbPath = DllDirectory + MdbName + ".bytes";
+    private static string MdbPath = DllDirectory + PdbName + ".bytes";
     private DateTime lastModifiedTime;
 
     #region UnityLifecycle Events
