@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using GameCore.MonoBehaviours;
+using GameCore.Models;
 using UnityEngine;
 
 namespace GameCore
@@ -15,12 +16,12 @@ namespace GameCore
 
         private GameObject[] viewMarkers;
 
-        //private static Dictionary<Type, GameModel> registry = new Dictionary<Type, GameModel>();
+        private static Dictionary<Type, GameModel> registry = new Dictionary<Type, GameModel>();
 
-        //public static void Register<T>(T model) where T : GameModel
-        //{
-        //    registry[model.GetType()] = model;
-        //}
+        public static void Register<T>(T model) where T : GameModel
+        {
+            registry[model.GetType()] = model;
+        }
 
         public void Load(object previous)
         {
@@ -34,6 +35,7 @@ namespace GameCore
 
                 //if (previous != null)
                 //    rootModel.LoadReloadState(previous as Dictionary<string, object>);
+
                 //rootModel.SafeInit();
             }
             catch (Exception e)

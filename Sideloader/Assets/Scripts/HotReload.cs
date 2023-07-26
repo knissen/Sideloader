@@ -15,16 +15,15 @@ public class HotReload : MonoBehaviour
 
     private static string Namespace = "GameCore";
     private static string ClassName = "GameMain";
-    private static string DllName = "CardceptionCore.dll";
+    private static string DllName = "GameCore.dll";
 
     private IGameCore gameCore;
 
 #if UNITY_EDITOR
-    private static string MdbName = "CardceptionCore.mdb";
-#if (UNITY_STANDALONE_OSX)    
+    private static string MdbName = "GameCore.mdb";
     private static string DllDirectory = "Assets//GameCoreOutput//Resources//";
 #else
-    private static string DllDirectory = "Assets\\Cardception\\Core\\Resources\\";
+    private static string DllDirectory = "Assets\\GameCore\\Resources\\";
 #endif    
     private static string DllPath = DllDirectory + DllName + ".bytes";
     private static string MdbPath = DllDirectory + MdbName + ".bytes";
@@ -53,7 +52,7 @@ public class HotReload : MonoBehaviour
 
     private void ReloadDllIfNeeded()
     {
-        if (AutoReload && (File.GetLastWriteTime(DllPath) != lastModifiedTime || Input.GetKeyDown(ForceReloadKey)))
+        if ((AutoReload && (File.GetLastWriteTime(DllPath) != lastModifiedTime) || Input.GetKeyDown(ForceReloadKey)))
         {
             if(LogToConsole)
                 Debug.LogError($"Reloading: {lastModifiedTime} // {File.GetLastWriteTime(DllPath)}");
@@ -83,6 +82,4 @@ public class HotReload : MonoBehaviour
     }
 
     #endregion
-
-#endif
 }
