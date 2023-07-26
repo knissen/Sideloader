@@ -31,6 +31,12 @@ public class HotReload : MonoBehaviour
 
     #region UnityLifecycle Events
 
+    public void Start()
+    {
+        if (!AutoReload)
+            ReloadDLLFile(new Stopwatch(), null, false);
+    }
+
     public void Update()
     {
         try
@@ -54,7 +60,7 @@ public class HotReload : MonoBehaviour
     {
         if ((AutoReload && (File.GetLastWriteTime(DllPath) != lastModifiedTime) || Input.GetKeyDown(ForceReloadKey)))
         {
-            if(LogToConsole)
+            if (LogToConsole)
                 Debug.LogError($"Reloading: {lastModifiedTime} // {File.GetLastWriteTime(DllPath)}");
 
             var stopwatch = new Stopwatch();
@@ -62,15 +68,21 @@ public class HotReload : MonoBehaviour
 
             stopwatch.Start();
             var shouldLogReload = lastModifiedTime.Ticks != 0;
-            lastModifiedTime = File.GetLastWriteTime(DllPath);
-            var dllBytes = File.ReadAllBytes(DllPath);
-            var mdbBytes = File.ReadAllBytes(MdbPath);
 
-            if (shouldLogReload)
-                Debug.LogError($"Reloaded dll took {stopwatch.ElapsedMilliseconds / 1000f:0.000}");
-
-            LoadDll(dllBytes, mdbBytes, saved);
+            ReloadDLLFile(stopwatch, saved, shouldLogReload);
         }
+    }
+
+    private void ReloadDLLFile(Stopwatch stopwatch, object saved, bool shouldLogReload)
+    {
+        lastModifiedTime = File.GetLastWriteTime(DllPath);
+        var dllBytes = File.ReadAllBytes(DllPath);
+        var mdbBytes = File.ReadAllBytes(MdbPath);
+
+        if (shouldLogReload)
+            Debug.LogError($"Reloaded dll took {stopwatch.ElapsedMilliseconds / 1000f:0.000}");
+
+        LoadDll(dllBytes, mdbBytes, saved);
     }
 
     private void LoadDll(byte[] dllBytes, byte[] mdbBytes = null, object saved = null)
