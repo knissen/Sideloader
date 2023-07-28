@@ -12,3 +12,5 @@ C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.dll
 C:\Work\Projects\Sideloader\GameCore\GameCore\obj\Debug\GameCore.pdb
 C:\Work\Projects\Sideloader\Sideloader\Assets\GameCore\GameCore.dll
 C:\Work\Projects\Sideloader\Sideloader\Assets\GameCore\GameCore.pdb
+C:\Work\Projects\Sideloader\VividHelixHotReload\Assets\GameCore\GameCore.dll
+C:\Work\Projects\Sideloader\VividHelixHotReload\Assets\GameCore\GameCore.pdb

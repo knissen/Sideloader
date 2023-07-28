@@ -13,13 +13,12 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <UnityInstallFolder>..\..\..\..\..\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Data\</UnityInstallFolder>
-    <!--<MonoMdbGenerator>$(UnityInstallFolder)\Data\MonoBleedingEdge\lib\mono\4.5\pdb2mdb.exe</MonoMdbGenerator>-->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Sideloader\Assets\GameCore\</OutputPath>
+    <OutputPath>..\..\VividHelixHotReload\Assets\GameCore\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -38,7 +37,7 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sideloader\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\VividHelixHotReload\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -64,11 +63,6 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!--<Target Name="GenerateMonoSymbols">
-    <Message Text="$(ProjectName) -&gt; $(TargetPath).mdb" Importance="High" />
-    <Message Text="Unity install folder: $(UnityInstallFolder)" Importance="high" />
-    <Exec Command="&quot;$(MonoMdbGenerator)&quot; $(AssemblyName).dll" WorkingDirectory="$(OutputPath)" />
-  </Target>-->
   <Target Name="AfterBuild">
     <Copy SourceFiles="$(OutputPath)\GameCore.dll" DestinationFiles="$(OutputPath)\Resources\GameCore.dll.bytes" />
     <Copy SourceFiles="$(OutputPath)\GameCore.pdb" DestinationFiles="$(OutputPath)\\Resources\GameCore.pdb.bytes" />
