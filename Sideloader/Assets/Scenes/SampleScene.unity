@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185638ba72d27f046a27df33f8f4e9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoReload: 0
+  AutoReload: 1
   LogToConsole: 1
   ForceReloadKey: 32
 --- !u!4 &889377676

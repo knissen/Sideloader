@@ -57,6 +57,8 @@ namespace GameCore.Models
         public virtual void SaveReloadState(Dictionary<string, object> state)
         {
             Children.Each(x => x.SaveReloadState(state));
+
+            Debug.Log("Heel");
         }
 
         public virtual void LoadReloadState(Dictionary<string, object> state)
