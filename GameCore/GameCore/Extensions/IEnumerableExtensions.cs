@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameCore
+namespace VividHelix.HotReload.GameCore
 {
     public static class IEnumerableExtensions
     {

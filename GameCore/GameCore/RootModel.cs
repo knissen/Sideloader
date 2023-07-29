@@ -1,9 +1,9 @@
-﻿using GameCore.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using VividHelix.HotReload.GameCore.Models;
 
-namespace GameCore
+namespace VividHelix.HotReload.GameCore
 {
     public class RootModel : GameModel
     {

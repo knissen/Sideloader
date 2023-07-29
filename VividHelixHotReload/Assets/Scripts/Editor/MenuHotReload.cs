@@ -1,70 +1,96 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 using UnityEditor;
 using UnityEngine;
 
-public class MenuHotReload : EditorWindow
+namespace VividHelix.HotReload
 {
-    [MenuItem("VividHelix/Config HotSwap")]
-    public static void ConfigureHotSwapProject()
+    public class MenuHotReload : EditorWindow
     {
-        Debug.Log("Config!");
-
-        HotReloadSettings settings = GetOrCreateSettings();
-
-        if(settings != null)
+        [MenuItem("VividHelix/Config HotSwap")]
+        public static void ConfigureHotSwapProject()
         {
-            Debug.Log("Settings found");
+            Debug.Log("Running VividHelix HotReload configuration");
+
+            HotReloadSettings settings = GetOrCreateSettings();
+
+            if (settings == null)
+            {
+                Debug.LogError("Settings not found. Check console for error message.");
+                return;
+            }
+
+            // Find Visual Studio project
+            if (TryGetPathForProjectFile(out string projPath))
+            {
+                settings.gameCoreProjectFile = projPath;
+                EditorUtility.SetDirty(settings);
+
+                XmlDocument projDoc = new XmlDocument();
+                projDoc.Load(projPath);
+
+                SetupUnityInstallPath(projDoc);
+
+                projDoc.Save(projPath);
+            }
+            else
+            {
+                Debug.Log("Config Cancelled");
+                return;
+            }
+
+            // Prompt for path to Unity install
+
+            // 
+
+            AssetDatabase.SaveAssetIfDirty(settings);
+            AssetDatabase.Refresh();
+
+            Selection.activeObject = settings;
         }
 
-        // Find Visual Studio project
-        if(TryGetPathForProjectFile(out string projPath))
+        private static void SetupUnityInstallPath(XmlDocument projDoc)
         {
-            Debug.Log("Path to proj: " + projPath);
+            XmlNodeList nodes = projDoc.GetElementsByTagName("UnityInstallFolder");
 
-
-        }
-        else
-        {
-            Debug.Log("Config Cancelled");
-            return;
+            if (nodes.Count == 1)
+            {
+                nodes[0].InnerText = Path.GetDirectoryName(EditorApplication.applicationPath) + @"\Data\";
+            }
         }
 
-        // Prompt for path to Unity install
-
-        // 
-    }
-
-    private static HotReloadSettings GetOrCreateSettings()
-    {
-        string[] path = AssetDatabase.FindAssets("t:HotReloadSettigns");
-
-        if(path.Length > 1)
+        private static HotReloadSettings GetOrCreateSettings()
         {
-            Debug.LogError("Too many HotReloadSettings found. There shoudl be only one. Using first found by default");
+            string[] guids = AssetDatabase.FindAssets("t:HotReloadSettins");
+
+            if (guids.Length > 1)
+            {
+                Debug.LogError("Too many HotReloadSettings found. There shoudl be only one. Using first found by default");
+            }
+
+            if (guids.Length == 0)
+            {
+                HotReloadSettings settings = ScriptableObject.CreateInstance(typeof(HotReloadSettings)) as HotReloadSettings;
+
+                AssetDatabase.CreateAsset(settings, "Assets/HotReloadSettings.asset");
+
+                return settings;
+            }
+
+            return AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guids[0]), typeof(HotReloadSettings)) as HotReloadSettings;
         }
 
-        if (path.Length == 0)
+        private static bool TryGetPathForProjectFile(out string projPath)
         {
-            HotReloadSettings settings = ScriptableObject.CreateInstance(typeof(HotReloadSettings)) as HotReloadSettings;
+            projPath = EditorUtility.OpenFilePanel("Find GameCore Project File", "../", "csproj");
 
-            AssetDatabase.CreateAsset(settings, "Assets/HotReloadSettings.asset");
+            if (string.IsNullOrEmpty(projPath))
+                return false;
 
-            return settings;
+            return true;
         }
-
-        return AssetDatabase.LoadAssetAtPath(path[0], typeof(HotReloadSettings)) as HotReloadSettings;
-
-    }
-
-    private static bool TryGetPathForProjectFile(out string projPath)
-    {
-        projPath = EditorUtility.OpenFilePanel("Find GameCore Project File", "Assets", "csproj");
-
-        if (string.IsNullOrEmpty(projPath))
-            return false;
-
-        return true;
-    }
+    } 
 }

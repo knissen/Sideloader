@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace GameCore.Models
+namespace VividHelix.HotReload.GameCore.Models
 {
     public abstract class GameModel
     {

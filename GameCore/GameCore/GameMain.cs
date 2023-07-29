@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using GameCore.MonoBehaviours;
-using GameCore.Models;
+using VividHelix.HotReload.GameCore.Models;
 using UnityEngine;
 
-namespace GameCore
+namespace VividHelix.HotReload.GameCore
 {
     public class GameMain : IGameCore
     {

@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(HotReloadSettings))]
-public class HotReloadSettingsEditor : Editor
+namespace VividHelix.HotReload
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(HotReloadSettings))]
+    public class HotReloadSettingsEditor : Editor
     {
-        base.OnInspectorGUI();
-
-        if(GUILayout.Button("Configure HotReload"))
+        public override void OnInspectorGUI()
         {
-            MenuHotReload.ConfigureHotSwapProject();
+            base.OnInspectorGUI();
+
+            if (GUILayout.Button("Configure HotReload"))
+            {
+                MenuHotReload.ConfigureHotSwapProject();
+            }
         }
-    }
+    } 
 }

@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <UnityInstallFolder>..\..\..\..\..\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Data\</UnityInstallFolder>
+    <UnityInstallFolder>C:\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Data\</UnityInstallFolder>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
