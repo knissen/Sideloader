@@ -1,4 +1,4 @@
-// Copyright 2023 Vivid Helix
+﻿// Copyright 2023 Vivid Helix
 // This file is part of ViviHelixTestFramework.
 // ViviHelixTestFramework is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License
 // as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
@@ -18,7 +18,7 @@ namespace VividHelix.HotReload
 {
     public class MenuHotReload : EditorWindow
     {
-        [MenuItem("VividHelix/Config HotSwap")]
+        [MenuItem("VividHelix/Config Hot Reload")]
         public static void ConfigureHotSwapProject()
         {
             Debug.Log("Running VividHelix HotReload configuration");
@@ -57,6 +57,8 @@ namespace VividHelix.HotReload
             AssetDatabase.SaveAssetIfDirty(settings);
             AssetDatabase.Refresh();
 
+            EditorUtility.DisplayDialog("Config Complete", "Please check settings asset for correct Assembly name and configuration options for project if not using default setup", "Ok");
+
             Selection.activeObject = settings;
         }
 
@@ -93,12 +95,18 @@ namespace VividHelix.HotReload
 
         private static bool TryGetPathForProjectFile(out string projPath)
         {
-            projPath = EditorUtility.OpenFilePanel("Find GameCore Project File", "../", "csproj");
+            if (EditorUtility.DisplayDialog("Locate Project File", "Please locate the csproj file for the GameCore project to configure build outputs", "Ok"))
+            {
+                projPath = EditorUtility.OpenFilePanel("Find GameCore Project File", "../", "csproj");
 
-            if (string.IsNullOrEmpty(projPath))
-                return false;
+                if (string.IsNullOrEmpty(projPath))
+                    return false;
 
-            return true;
+                return true; 
+            }
+
+            projPath = "";
+            return false;
         }
     } 
 }
