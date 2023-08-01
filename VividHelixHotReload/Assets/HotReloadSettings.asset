@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e6f638be32aa54e92723c27ed6cdd9, type: 3}
   m_Name: HotReloadSettings
   m_EditorClassIdentifier: 
-  gameCoreProjectFile: C:/Work/Projects/Sideloader/GameCore/GameCore/GameCore.csproj
+  gameCoreProjectFile: D:/Projects/Sideloader/GameCore/GameCore/GameCore.csproj
   Namespace: VividHelix.HotReload.GameCore
   ClassName: GameMain
   DllName: GameCore.dll
